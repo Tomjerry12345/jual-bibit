@@ -12,31 +12,36 @@ class Product {
       namaPenjual,
       noRekening,
       buktiPembayaran,
-      idCart;
+      idCart,
+      jenisBibit,
+      asalBibit;
   final GeoPoint? lokasi;
-  final int? harga, usia, berat, jumlah;
+  final int? harga, usia, berat, jumlah, umurBibit;
   // final bool? isPemesan;
 
-  Product({
-    this.id,
-    this.image,
-    this.nama,
-    this.usia,
-    this.berat,
-    this.harga,
-    this.jumlah,
-    this.kategori,
-    this.lokasi,
-    this.noHp,
-    this.status,
-    this.statusPengiriman,
-    this.statusPembayaran,
-    this.namaPenjual,
-    this.noRekening,
-    this.buktiPembayaran,
-    this.idCart,
-    // this.isPemesan
-  });
+  Product(
+      {this.id,
+      this.image,
+      this.nama,
+      this.usia,
+      this.berat,
+      this.harga,
+      this.jumlah,
+      this.kategori,
+      this.lokasi,
+      this.noHp,
+      this.status,
+      this.statusPengiriman,
+      this.statusPembayaran,
+      this.namaPenjual,
+      this.noRekening,
+      this.buktiPembayaran,
+      this.idCart,
+      this.jenisBibit,
+      this.umurBibit,
+      this.asalBibit
+      // this.isPemesan
+      });
 
   factory Product.fromMap(Map<String, dynamic> data) {
     return Product(
@@ -48,7 +53,7 @@ class Product {
       usia: data['usia'] ?? 0,
       berat: data['berat'] ?? 0,
       lokasi: data['location'],
-      noHp: "+62${data['noHp']}",
+      noHp: data['noHp'],
       image: data['image'] ?? '',
       status: data['status'] ?? '',
       statusPengiriman: data['statusPengiriman'] ?? '',
@@ -57,6 +62,9 @@ class Product {
       noRekening: data['noRekening'] ?? '',
       buktiPembayaran: data['buktiPembayaran'] ?? '',
       idCart: data['idCart'] ?? '',
+      jenisBibit: data['jenisBibit'] ?? '',
+      asalBibit: data['asalBibit'] ?? '',
+      umurBibit: data['umurBibit'] ?? 0,
       // isPemesan: data['isPemesan'] ?? '',
     );
   }
@@ -80,6 +88,9 @@ class Product {
       'noRekening': noRekening,
       'buktiPembayaran': buktiPembayaran,
       'idCart': idCart,
+      'jenisBibit': jenisBibit,
+      'asalBibit': asalBibit,
+      'umurBibit': umurBibit,
       // 'isPemesan': isPemesan,
     };
   }

@@ -56,6 +56,15 @@ class CartController extends GetxController {
     cartData.value = listCart;
   }
 
+  String cleanPhone(String phone) {
+    if (phone.startsWith('+62')) {
+      return phone.replaceFirst('+62', '');
+    } else if (phone.startsWith('62')) {
+      return phone.replaceFirst('62', '');
+    }
+    return phone;
+  }
+
   Future<void> addToCart(Product product, String user) async {
     final checkDuplikat = await _fs.getDataCollection3ByQuery(
         "cart",
@@ -84,7 +93,8 @@ class CartController extends GetxController {
         statusPenjualan: StatusPenjualan.belumTerjual.deskripsi,
         image: product.image,
         jumlah: jumlahBeli.value,
-        harga: product.harga);
+        harga: product.harga,
+        noHp: product.noHp!);
 
     await _fs.addDataCollection("cart", cart.toMap());
 

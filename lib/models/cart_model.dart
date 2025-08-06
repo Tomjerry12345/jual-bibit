@@ -1,5 +1,5 @@
 class Cart {
-  final String? id, idProduk, pembeli, statusPenjualan, image, nama;
+  final String? id, idProduk, pembeli, statusPenjualan, image, nama, noHp;
   final int? jumlah, harga;
 
   Cart(
@@ -10,7 +10,8 @@ class Cart {
       this.image,
       this.nama,
       this.jumlah,
-      this.harga});
+      this.harga,
+      this.noHp});
 
   factory Cart.fromMap(Map<String, dynamic> data) {
     return Cart(
@@ -22,6 +23,7 @@ class Cart {
       nama: data['nama'] ?? '',
       jumlah: data['jumlah'] ?? 0,
       harga: data['harga'] ?? 0,
+      noHp: data['noHp'] ?? 0,
     );
   }
 
@@ -35,6 +37,7 @@ class Cart {
       'nama': nama,
       'jumlah': jumlah,
       'harga': harga,
+      'noHp': noHp,
     };
   }
 }

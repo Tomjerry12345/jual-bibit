@@ -29,7 +29,7 @@ class CartItem extends StatelessWidget {
 
     Future<void> openWhatsAppOrCall(String phoneNumber, String message) async {
       final whatsappUrl = Uri.parse(
-          'https://wa.me/$phoneNumber?text=${Uri.encodeComponent(message)}');
+          'https://wa.me/62$phoneNumber?text=${Uri.encodeComponent(message)}');
       final phoneUrl = Uri.parse('tel:$phoneNumber');
 
       if (await canLaunchUrl(whatsappUrl)) {
@@ -214,8 +214,8 @@ class CartItem extends StatelessWidget {
                         icon: const Icon(Icons.chat,
                             size: 20, color: Colors.green),
                         onPressed: () {
-                          openWhatsAppOrCall(
-                              noHp, 'Halo, saya tertarik dengan produk ini.');
+                          openWhatsAppOrCall(data.noHp!,
+                              'Halo, saya tertarik dengan produk ini.');
                         },
                       ),
                       IconButton(

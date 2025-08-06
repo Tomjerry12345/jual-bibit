@@ -22,8 +22,9 @@ class ProductDetailsScreen extends StatelessWidget {
     final authController = Get.find<AuthController>();
 
     Future<void> openWhatsAppOrCall(String phoneNumber, String message) async {
+      print(phoneNumber);
       final whatsappUrl = Uri.parse(
-          'https://wa.me/$phoneNumber?text=${Uri.encodeComponent(message)}');
+          'https://wa.me/62$phoneNumber?text=${Uri.encodeComponent(message)}');
       final phoneUrl = Uri.parse('tel:$phoneNumber');
 
       if (await canLaunchUrl(whatsappUrl)) {
@@ -86,11 +87,11 @@ class ProductDetailsScreen extends StatelessWidget {
               ),
               ProductListTile(
                 title: "No hp",
-                value: noHp,
+                value: product.noHp!,
                 isShowBottomBorder: true,
                 press: () {
                   openWhatsAppOrCall(
-                      noHp, 'Halo, saya tertarik dengan produk ini.');
+                      product.noHp!, 'Halo, saya tertarik dengan produk ini.');
                 },
               ),
               ProductListTile(
@@ -104,6 +105,18 @@ class ProductDetailsScreen extends StatelessWidget {
               ProductListTile(
                 title: "Harga",
                 value: "Rp. ${product.harga}",
+              ),
+              ProductListTile(
+                title: "Jenis bibit",
+                value: "${product.jenisBibit}",
+              ),
+              ProductListTile(
+                title: "Umur bibit",
+                value: "${product.umurBibit}",
+              ),
+              ProductListTile(
+                title: "Asal biit",
+                value: "${product.asalBibit}",
               ),
               ProductListTile(
                   title: "Jumlah beli",
