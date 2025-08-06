@@ -27,6 +27,9 @@ class InputProducts extends StatelessWidget {
   final hargaController = TextEditingController();
   final jumlahController = TextEditingController();
   final noHpController = TextEditingController();
+  final jenisBibitController = TextEditingController();
+  final umurBibitController = TextEditingController();
+  final asalBibitController = TextEditingController();
 
   final isLoading = false.obs; // Observable untuk status loading
 
@@ -83,6 +86,9 @@ class InputProducts extends StatelessWidget {
         final harga = hargaController.text;
         final jumlah = jumlahController.text;
         final noHp = noHpController.text;
+        final jenisBibit = jenisBibitController.text;
+        final umurBibit = umurBibitController.text;
+        final asalBibit = asalBibitController.text;
 
         if (
             // nama.isEmpty ||
@@ -117,6 +123,9 @@ class InputProducts extends StatelessWidget {
             noHp: noHp,
             harga: int.parse(harga),
             jumlah: int.parse(jumlah),
+            jenisBibit: jenisBibit,
+            umurBibit: int.parse(umurBibit),
+            asalBibit: asalBibit,
           );
 
           await fs.addDataCollection("produk", product.toMap());
@@ -249,6 +258,32 @@ class InputProducts extends StatelessWidget {
                       color: inputTextColor, fontWeight: FontWeight.bold),
                 ),
               ),
+            ),
+            V(16),
+            Row(
+              children: [
+                Expanded(
+                    child: TextfieldComponent(
+                  controller: jenisBibitController,
+                  hintText: "Jenis bibit",
+                  size: 14,
+                )),
+                H(16),
+                Expanded(
+                  child: TextfieldComponent(
+                    controller: umurBibitController,
+                    hintText: "Umur bibit",
+                    size: 14,
+                    inputType: TextInputType.number,
+                  ),
+                )
+              ],
+            ),
+            V(16),
+            TextfieldComponent(
+              controller: asalBibitController,
+              hintText: "Asal bibit",
+              size: 14,
             ),
             V(24),
             Obx(() {

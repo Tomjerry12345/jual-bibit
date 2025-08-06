@@ -1,16 +1,18 @@
 class Product {
-  final String? id, idCart, image, nama, noHp;
-  final int? harga, jumlah;
+  final String? id, idCart, image, nama, noHp, jenisBibit, asalBibit;
+  final int? harga, jumlah, umurBibit;
 
-  Product({
-    this.id,
-    this.idCart,
-    this.image,
-    this.nama,
-    this.noHp,
-    this.harga,
-    this.jumlah,
-  });
+  Product(
+      {this.id,
+      this.idCart,
+      this.image,
+      this.nama,
+      this.noHp,
+      this.harga,
+      this.jumlah,
+      this.jenisBibit,
+      this.umurBibit,
+      this.asalBibit});
 
   factory Product.fromMap(Map<String, dynamic> data) {
     return Product(
@@ -21,6 +23,9 @@ class Product {
       noHp: data['noHp'] ?? '',
       harga: data['harga'] ?? 0,
       jumlah: data['jumlah'] ?? 0,
+      jenisBibit: data['jenisBibit'] ?? "",
+      umurBibit: data['umurBibit'] ?? 0,
+      asalBibit: data['asalBibit'] ?? "",
     );
   }
 
@@ -33,6 +38,9 @@ class Product {
       'noHp': noHp,
       'harga': harga,
       'jumlah': jumlah,
+      'jenisBibit': jenisBibit,
+      'umurBibit': umurBibit,
+      'asalBibit': asalBibit,
     };
   }
 }
